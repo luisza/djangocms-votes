@@ -62,7 +62,7 @@ Migrations
 
 Run migrations
 
-.. code:: python
+.. code:: bash
 
 	$ python manage.py migrate
 
@@ -72,13 +72,19 @@ Include js requirements in html
 Django ajax has a especial requirement that force to include js lib in your template, so 
 you can add this to your base template
 
+.. code:: html
+
 	{% load staticfiles  %}
 
 Include jquery, you need to download from cdn o from official page and include in your static folder
 
+.. code:: html
+
 	<script src="{% static 'js/jquery.js' %}"></script>
 
 add before jquery those lines
+
+.. code:: html
 
 	<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax-plugin.min.js' %}"></script>
