@@ -1,0 +1,56 @@
+{% comment  %}
+Context
+{'page': page,
+     'object_list': object_list,
+     'appname': get_app_name_models(page),
+     'stats': {'positive':0, 'negative': 0, 'neutral': 0}}	
+#}
+{% endcomment %}
+
+{% load i18n %}
+<div class="user_comment_chart"   >
+    <small> {% trans 'User comments' %}</small>
+	<canvas id="{{id}}_user_comment_chart_{{user.pk}}" width="30" height="30"></canvas>
+	
+	<script>
+{% if as_view %}
+(function(){
+{%else%}
+document.addEventListener("DOMContentLoaded", function(event){
+{% endif%}
+		var ctx = document.getElementById("{{id}}_user_comment_chart_{{user.pk}}").getContext("2d");
+		
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["{% trans 'Positive' %}", "{% trans 'Negative' %}", "{% trans 'Neutral' %}", ],
+        datasets: [{
+            label: '{% trans '# type of comments' %}',
+            data: [{{stats.positive}}, {{stats.negative}}, {{stats.neutral}},],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+    		display: false
+    	 }
+    }
+});
+
+{% if as_view %}
+})();
+{% else %}
+});
+{%endif%}
+	</script>
+</div>

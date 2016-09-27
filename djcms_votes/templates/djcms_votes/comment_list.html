@@ -1,0 +1,35 @@
+{% load i18n %}
+<style>
+ .commentactive{font-size: 1.5em;	color: red;}
+ .comment_header{ display: flex; }
+ .comment_vote{ width: 20%; }
+ .ch_user{ width:40%; }
+ .ch_dates{ width:40%;  }
+</style>
+
+<div id="comment_list">
+
+{% for object in object_list %}
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<div class="comment_header">
+	{% include 'djcms_votes/likes.html' %}
+	<div class="ch_user">
+		<strong>{% trans 'User:' %}</strong> 
+		<a data-ajax=true data-success="show_user_stats" href="{% url 'user_votes' object.user.pk  %}">
+			{{object.user}}  {{object.user.get_full_name}} </a>
+	</div>
+	<div class="ch_dates">
+		<strong>{% trans 'Create date:' %}</strong> {{object.created_date}}
+	</div>
+	</div>
+<hr>
+	{{object.message}}
+</div>
+</div>
+{% empty%}
+<div class="alert alert-info"> {% trans 'Not comments found' %} </div>
+{% endfor %}
+
+{% include 'djcms_votes/pagination.html' %}
+</div>

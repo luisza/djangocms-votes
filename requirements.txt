@@ -1,0 +1,4 @@
+django>=1.7
+django-cms>=3.3.2
+aldryn-newsblog==1.3.0
+djangoajax

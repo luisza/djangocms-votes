@@ -1,0 +1,58 @@
+{% comment  %}
+Context
+{'page': page,
+     'object_list': object_list,
+     'appname': get_app_name_models(page),
+     'stats': {'1':0, '2': 0, '3': 0, '4': 0, '5': 0}}	
+#}
+{% endcomment %}
+
+{% load i18n %}
+<div data-refresh-url="{% url 'poll_chart' appname model page.pk %}" id="poll_chart" class="row">
+	<canvas id="poolChart" width="400" height="400"></canvas>
+	
+	<script>
+{% if as_view %}
+(function(){
+{%else%}
+document.addEventListener("DOMContentLoaded", function(event){
+{% endif%}
+		var ctx = document.getElementById("poolChart").getContext("2d");
+		
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['\u2605', '\u2605\u2605', "\u2605\u2605\u2605", 
+        '\u2605\u2605\u2605\u2605', '\u2605\u2605\u2605\u2605\u2605' ],
+        datasets: [{
+            label: '{% trans "Articule votes" %}',
+            data: [{{stats.1}}, {{stats.2}}, {{stats.3}},  {{stats.4}},  {{stats.5}},],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(150, 6, 86, 0.2)',
+                'rgba(155, 190,126, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    animation:{
+        animateScale:true
+    }
+             
+  
+});
+
+{% if as_view %}
+})();
+{% else %}
+});
+{%endif%}
+	</script>
+</div>

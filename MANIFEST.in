@@ -1,0 +1,6 @@
+include README.rst
+include LICENSE
+include requirements.txt
+graft djcms_votes/templates
+graft djcms_votes/static
+graft djcms_votes/locale

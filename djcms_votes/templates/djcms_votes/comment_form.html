@@ -1,0 +1,21 @@
+
+<div id="comment_field"> {# preserve id name is important #}
+	   {{ form.errors }}
+	<form class="form"  method="POST"
+action="{% url 'comment_create' %}" onsubmit="return false;" data-ajax-submit="">
+{% csrf_token %}
+
+<div class="form-group">
+   {{ form.message.errors }}
+    {{ form.message.label_tag }}
+   <textarea class="form-control" id="id_message" 
+   rows="10" name="message" cols="40"></textarea>
+</div>
+	<input type="hidden" name="page" value="{{page.pk}}">
+	<input type="hidden" name="appname" value="{{appname}}">
+	<input type="hidden" name="url" value="{{request.build_absolute_uri}}">
+	<button class="btn btn-success" type="submit" >Comentar </button>
+</form>
+{{form.media}}
+
+</div>

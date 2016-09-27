@@ -1,0 +1,9 @@
+
+<div id="comment_list">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event){
+	ajaxGet('{% url "comment_list" %}?pk={{page.pk}}&appname={{appname}}&model={{model}}', function(content){});
+});
+</script>

@@ -1,0 +1,15 @@
+<div id="comment_vote_{{object.pk}}" class="comment_vote">
+<a href="{% url 'comment_vote' object.pk 1 %}"  data-refresh="#comment_chart"
+	data-ajax=true {% if object.comment_type == 1 %}class="commentactive"{% endif %} >
+	<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+</a>
+<a href="{% url 'comment_vote' object.pk 2 %}" data-refresh="#comment_chart"
+	data-ajax=true {% if object.comment_type == 2 %}class="commentactive"{% endif %} >
+	<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+</a>
+<a href="{% url 'comment_vote' object.pk 3 %}" data-refresh="#comment_chart"
+	data-ajax=true {% if object.comment_type == 3 %}class="commentactive"{% endif %} >
+	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+</a>
+</div>
+  	

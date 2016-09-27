@@ -1,0 +1,11 @@
+<div id="poll_vote" class="poll_vote">
+	
+	{% for s in stars%}
+		<a href="{% url 'poll_vote' appname model pk s %}"  data-refresh="#poll_chart"
+			data-ajax=true {% if object.poll_type >= s %}class="staractive"{% endif %} >
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</a>
+    {% endfor%}
+</div>
+
+  	

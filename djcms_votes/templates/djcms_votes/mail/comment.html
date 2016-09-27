@@ -1,0 +1,16 @@
+{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
+
+
+{{comment.user.get_full_name}} ha comentado en el artículo
+<a 
+href="{{url}}">
+{% render_model page "title" %}
+</a> lo siguiente:
+
+<br>
+
+<pre>
+{{comment.message}}
+</pre>
+
+
