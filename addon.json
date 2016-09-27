@@ -1,0 +1,7 @@
+{
+    "package-name": "djangocms-votes",
+    "installed-apps": [
+		"aldryn-newsblog",
+        "djangocms-votes",
+    ]
+}
