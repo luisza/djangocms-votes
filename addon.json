@@ -1,8 +1,8 @@
 {
     "package-name": "djangocms-votes",
     "installed-apps": [
-		'djcms_votes',
-		'django_ajax',
-		'aldryn_newsblog',
+		"djcms_votes",
+		"django_ajax",
+		"aldryn_newsblog"
     ]
 }

@@ -12,6 +12,6 @@ class Form(forms.BaseForm):
     )
 
     def to_settings(self, data, settings):
-		emails = data.get('comment_notification_email', '')
+        emails = data.get('comment_notification_email', '')
         settings['COMMENT_EMAIL_NOTIFICATION'] = emails.split(",")
         return settings

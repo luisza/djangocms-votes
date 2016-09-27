@@ -2,7 +2,6 @@
   "name": "package",
   "private": true,
   "devDependencies": {
-    "djangoajax": "^2.3.6",
-	
+    "djangoajax": "^2.3.6"
   }
 }
