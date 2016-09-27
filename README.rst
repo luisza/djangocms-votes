@@ -97,12 +97,11 @@ djangocms-votes provide the follow template tags, *article* it's a template vari
 {% load votes %}
 ---------------------
 
-* render_comments: If user is super user them show all comments, if user is logged then show a input comment field.
-Super users can vote comment as possitive, negative or neutral. 
+* render_comments: If user is super user them show all comments, if user is logged then show a input comment field. Super users can vote comment as possitive, negative or neutral. Email is send to *COMMENT_EMAIL_NOTIFICATION*  when user make a comment.
 
 	{% render_comments article %}
 
-Email is send to *COMMENT_EMAIL_NOTIFICATION*  when user make a comment.
+
 
 * render_comment_chart: Show chart with super users comment votes for this article.
 
