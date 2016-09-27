@@ -21,6 +21,7 @@ Add *djcms_votes* and django_ajax to your INSTALLED_APPS
 		...  
 		'djcms_votes',
 		'django_ajax',
+		'ajax_select',
 		'aldryn_newsblog',
 	]
 
@@ -37,9 +38,11 @@ Configure yours urls.py
 =========================
 .. code:: python
 
+	from ajax_select import urls as ajax_select_urls
 	urlpatterns = [
 		...
 		url(r'^votes/', include('djcms_votes.urls')),
+		url(r'^ajax_select/', include(ajax_select_urls)),
 		]
 
 it's also possible to include as url list for django>=1.10 using djcms_votes.urls.urlpatterns

@@ -3,6 +3,7 @@
     "installed-apps": [
 		"djcms_votes",
 		"django_ajax",
+		"ajax_select",
 		"aldryn_newsblog"
     ]
 }
