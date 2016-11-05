@@ -1,0 +1,29 @@
+<script>
+var ctx = document.getElementById("{{name}}");
+if(document.charts == undefined){document.charts={}};
+document.charts['{{name}}'] = {
+    type: '{{graph_type}}',
+    data: {
+        labels: {{labels|safe}},
+        datasets: [{% for dataset in datasets %}
+        {label: "{{dataset.label|safe}}",
+            data: {{dataset.data|safe}},
+            backgroundColor: {{dataset.backgroundColor|safe}},
+            borderColor: {{dataset.borderColor|safe}},
+            borderWidth: 1
+        },
+        {% endfor %}
+        ] },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+}
+
+var l = new Chart(ctx, document.charts['{{name}}']);
+</script>

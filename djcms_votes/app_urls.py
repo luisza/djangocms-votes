@@ -1,10 +1,10 @@
 
 
 from django.conf.urls import url
-from djcms_votes.appviews import PollList
+from djcms_votes.appviews import BucketView
 
 
 urlpatterns = [
-    url(r'$', PollList.as_view(), name="app_poll_list"),
+    url(r'$', BucketView.as_view(), name="app_poll_list"),
 
 ]

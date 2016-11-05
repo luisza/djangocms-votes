@@ -3,36 +3,37 @@
 {% load static sekizai_tags  %}
 
 {% block content %}
+<div class="container">
 <form method="POST">
-{{form.errors}}
-<div class="row">
+{{forms.default.errors}}
+<div class="row " >
   <div class="col-md-4">
   	<h3> Article </h3>
-  	{{form.articles.label}}: {{form.articles}}
-  	{{form.categories.label}}:  {{form.categories}}
+  	{{forms.default.articles.label}}: {{forms.default.articles}}
+  	{{forms.default.categories.label}}:  {{forms.default.categories}}
   </div>
   <div class="col-md-4">
   	<h3> People </h3>
-  	{{form.people.label}}: {{form.people}}
-  	{{form.groups.label}}: {{form.groups}}
+  	{{forms.default.people.label}}: {{forms.default.people}}
+  	{{forms.default.groups.label}}: {{forms.default.groups}}
   </div>
   <div class="col-md-4">
   	<h3> Dates </h3>
   	Start date: 
     <input id="start_date" type="text" class="idatepicker" 
     data-date-format="dd/mm/yyyy"
-    value = "{% if form.start_date.value %}{{form.start_date.value }}{%endif%}" name="start_date"
+    value = "{% if forms.default.start_date.value %}{{forms.default.start_date.value }}{%endif%}" name="start_date"
      ><br>
  	
 	End date: 
     <input id="end_date" type="text" class="idatepicker" data-date-format="dd/mm/yyyy"
-    value = "{% if form.end_date.value%}{{form.end_date.value }}{%endif%}" name="end_date" 
+    value = "{% if forms.default.end_date.value%}{{forms.default.end_date.value }}{%endif%}" name="end_date" 
     >
 
   </div>
 </div>	
 
-	{{form.media}}
+	{{forms.default.media}}
 
 <div class="row">
   <div class="col-md-4 col-md-offset-5">
@@ -43,21 +44,20 @@
 <hr>
 
 <div class="row">
+	{% for bucket in graphics %}
   <div class="col-md-3">
-  	<h4>Starts</h4><br>
-  	{% for label, value in total_polls.display %}
+  	<h4>{{bucket.title}}</h4><br>
+  	{% for label, value in bucket.data.display %}
 	{{label}}: {{value}}<br>
 	{% endfor %}
   </div>
-  <div class="col-md-3">
-  	<h4>Comments</h4><br>
-  	{% for label, value in total_comment.display %}
-	{{label}}: {{value}}<br>
-	{% endfor %}  	
-  </div>
+	{% if forloop.counter0|divisibleby:4 and forloop.counter0%}
+	</div><div class="row">
+	{% endif %}
+  {%endfor%}
 </div>
 
-
+</div>
 
 
 {% addtoblock "css" %}

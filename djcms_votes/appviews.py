@@ -7,42 +7,25 @@ Free as freedom will be 24/9/2016
 '''
 
 from __future__ import unicode_literals
-from django.views.generic.list import ListView
-from djcms_votes.models import Poll, Comment
-from djcms_votes.forms import PollsForm
-from django.views.generic.edit import ProcessFormView
-from aldryn_people.models import Person
-from aldryn_newsblog.models import Article
-from django.contrib.contenttypes.models import ContentType
 
+from aldryn_newsblog.models import Article
+from aldryn_people.models import Person
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 
+from django.views.generic.edit import ProcessFormView
+from django.views.generic.list import ListView
+from djcms_votes.bucket import views
 
+BucketView = views.BucketView
+
+
+"""
 class PollList(ListView, ProcessFormView):
     model = Poll
     template_name = 'djcms_votes/app/poll_list.html'
     form = PollsForm
-
-    def get_contenttype_page(self):
-        return ContentType.objects.get(app_label="aldryn_newsblog",
-                                       model="article")
-
-    def get_person_by_group(self, pks):
-        people = [x[0] for x in Person.objects.filter(
-            groups__pk__in=pks).values_list('pk')]
-
-        return set(people)
-
-    def get_articles(self, pks):
-        articles = [x[0]
-                    for x in Article.objects.filter(pk__in=pks).values_list('pk')]
-        return set(articles)
-
-    def get_articles_by_categories(self, pks):
-        articles = [x[0]
-                    for x in Article.objects.filter(
-                        categories__pk__in=pks).values_list('pk')]
-        return set(articles)
 
     def filter_query_with_form(self, form, query):
         if 'people' in form.cleaned_data and form.cleaned_data['people']:
@@ -142,3 +125,4 @@ class PollList(ListView, ProcessFormView):
         context = self.get_form_context(context)
         context = self.get_comment_stats(context)
         return context
+"""
