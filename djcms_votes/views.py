@@ -22,7 +22,7 @@ from django_ajax.mixin import AJAXMixin
 from djcms_votes.forms import UserCommentForm
 from djcms_votes.mail import send_comment
 from djcms_votes.models import Comment, Poll
-from djcms_votes.utils import render_votes, render_polls, render_poll_likes
+from djcms_votes.utils import render_votes, render_polls, render_poll_likes, randomword
 
 
 # Create your views here.
@@ -212,7 +212,8 @@ def comments_per_user(request, user):
     }
     return render(request, 'djcms_votes/user_votes.html', {
         'user': user,
-        'stats': stats
+        'stats': stats,
+        'uid': randomword(5)
     })
 
 

@@ -1,19 +1,19 @@
 {% load i18n %}
 
-<div id="user_votes_modal" class="modal fade" tabindex="-1" role="dialog">
+<div id="user_votes_modal_{{uid}}" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">{{user.persons}} -- {{user.get_full_name}}</h4>
+        <h4 class="modal-title">{{user.persons}}</h4>
       </div>
       <div class="modal-body">
       	<div style="height: 300px;width: 300px">
-        	<canvas id="commentUserChart" width="200" height="200"></canvas>
+        	<canvas id="commentUserChart{{uid}}" width="200" height="200"></canvas>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -21,7 +21,7 @@
 	
 	<script>
 (function(){
-	var ctx = document.getElementById("commentUserChart").getContext("2d");
+	var ctx = document.getElementById("commentUserChart{{uid}}").getContext("2d");
 	var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -43,6 +43,7 @@
         }]
     },
     options: {
+    	legend: { display: false},
         scales: {
             yAxes: [{
                 ticks: {
@@ -54,6 +55,6 @@
 });
 })();
 
-$('#user_votes_modal').modal('show');
+$('#user_votes_modal_{{uid}}').modal('show');
 	</script>
 </div>

@@ -15,6 +15,7 @@ document.charts['{{name}}'] = {
         {% endfor %}
         ] },
     options: {
+    	legend: { display: false},
         scales: {
             yAxes: [{
                 ticks: {
@@ -23,6 +24,7 @@ document.charts['{{name}}'] = {
             }]
         }
     }
+
 }
 
 var l = new Chart(ctx, document.charts['{{name}}']);

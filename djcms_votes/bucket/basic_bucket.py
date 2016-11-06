@@ -217,7 +217,7 @@ class Poll(Basebucket):
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)'
             ]""",
-            'label': _('Total starts')
+            'label': _('Total stars')
         }
         return render_to_string('djcms_votes/app/graph.html',
                                 {
