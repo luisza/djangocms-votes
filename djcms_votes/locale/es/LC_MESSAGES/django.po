@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djcms_votes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-16 23:07-0600\n"
-"PO-Revision-Date: 2016-10-16 23:09-0600\n"
+"POT-Creation-Date: 2016-11-05 18:13-0600\n"
+"PO-Revision-Date: 2016-11-05 18:15-0600\n"
 "Last-Translator: Luis Zárate <luis.zarate@solvosoft.com>\n"
 "Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
@@ -19,25 +19,44 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: appviews.py:132 models.py:19 templates/djcms_votes/comment_chart.html:25
+#: bucket/basic_bucket.py:97
+msgid "Comments"
+msgstr "Comentarios"
+
+#: bucket/basic_bucket.py:124 models.py:19
+#: templates/djcms_votes/comment_chart.html:25
 #: templates/djcms_votes/user_comment_chart.html:26
 #: templates/djcms_votes/user_votes.html:28
 msgid "Positive"
 msgstr "Positivo"
 
-#: appviews.py:132 models.py:20 templates/djcms_votes/comment_chart.html:25
+#: bucket/basic_bucket.py:124 models.py:20
+#: templates/djcms_votes/comment_chart.html:25
 #: templates/djcms_votes/user_comment_chart.html:26
 #: templates/djcms_votes/user_votes.html:28
 msgid "Negative"
 msgstr "Negativo"
 
-#: appviews.py:132 models.py:21 templates/djcms_votes/comment_chart.html:25
+#: bucket/basic_bucket.py:124 models.py:21
+#: templates/djcms_votes/comment_chart.html:25
 #: templates/djcms_votes/user_comment_chart.html:26
 #: templates/djcms_votes/user_votes.html:28
 msgid "Neutral"
 msgstr "Neutral"
 
-#: cms_apps.py:14
+#: bucket/basic_bucket.py:151
+msgid "Total comments"
+msgstr "Total de comentarios"
+
+#: bucket/basic_bucket.py:166
+msgid "Polls"
+msgstr "Estrellas"
+
+#: bucket/basic_bucket.py:220
+msgid "Total starts"
+msgstr "Total de estrellas"
+
+#: cms_apps.py:14 templates/djcms_votes/user_poll_chart.html:7
 msgid "Votes"
 msgstr "Votos"
 
@@ -73,11 +92,15 @@ msgstr "Usuario"
 msgid "Password"
 msgstr "Contraseña"
 
+#: models.py:32
+msgid "Message"
+msgstr "Mensaje"
+
 #: templates/djcms_votes/comment_chart.html:27
 #: templates/djcms_votes/user_comment_chart.html:28
 #: templates/djcms_votes/user_votes.html:30
 msgid "# type of comments"
-msgstr "# tipo de comentarios"
+msgstr "# de comentarios"
 
 #: templates/djcms_votes/comment_list.html:18
 msgid "User:"
@@ -92,7 +115,7 @@ msgid "Not comments found"
 msgstr "No se encontraron comentarios"
 
 #: templates/djcms_votes/poll_chart.html:28
-#: templates/djcms_votes/user_poll_chart.html:22
+#: templates/djcms_votes/user_poll_chart.html:32
 msgid "Articule votes"
 msgstr "Votos del articulo"
 
@@ -100,7 +123,11 @@ msgstr "Votos del articulo"
 msgid "User comments"
 msgstr "Comentarios de usuario"
 
-#: templates/djcms_votes/user_poll_chart.html:5
+#: templates/djcms_votes/user_poll_chart.html:9
+msgid "Show plots"
+msgstr "Mostrar gráfico"
+
+#: templates/djcms_votes/user_poll_chart.html:13
 msgid "User votes"
 msgstr "Votos de usuario"
 
@@ -112,6 +139,6 @@ msgstr "Autentíquese para votar"
 msgid "New comment available"
 msgstr "Sin comentarios disponibles"
 
-#: views.py:57
+#: views.py:59
 msgid "Thanks, your comment was received"
-msgstr "Gracias, su comentario fue recibido"
+msgstr "Gracias, su comentario fue recibido satisfactoriamente"

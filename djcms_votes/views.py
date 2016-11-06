@@ -8,24 +8,24 @@ Free as freedom will be 11/9/2016
 
 from __future__ import unicode_literals
 
-from django_ajax.mixin import AJAXMixin
-from django.views.generic.edit import CreateView
-from djcms_votes.models import Comment, Poll
-# Create your views here.
-
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.models import ContentType
-from djcms_votes.forms import UserCommentForm
-from django_ajax.decorators import ajax
-from django.template.loader import render_to_string
-from django.views.generic.list import ListView
-from django.contrib.auth.decorators import login_required
-from djcms_votes.utils import render_votes, render_polls, render_poll_likes
-from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import render, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+from django_ajax.decorators import ajax
+from django_ajax.mixin import AJAXMixin
+
+from djcms_votes.forms import UserCommentForm
 from djcms_votes.mail import send_comment
+from djcms_votes.models import Comment, Poll
+from djcms_votes.utils import render_votes, render_polls, render_poll_likes
 
 
+# Create your views here.
 class CreateComment(AJAXMixin, CreateView):
     model = Comment
     form_class = UserCommentForm
@@ -54,7 +54,11 @@ class CreateComment(AJAXMixin, CreateView):
         send_comment(context)
         return {
             'fragments': {
-                '#comment_field': _("Thanks, your comment was received")
+                '#comment_field': """<div class="row">
+                <div class="alert alert-info col-md-8 col-md-offset-2">
+                """ + str(_("Thanks, your comment was received")) + """
+                </div></div>
+                """
             },
         }
 
@@ -70,7 +74,7 @@ class CreateComment(AJAXMixin, CreateView):
 
 class ListComment(AJAXMixin, ListView):
     model = Comment
-    paginate_by = 10
+    paginate_by = 5
 
     def extract_get_params(self):
         self.page_appname = self.request.GET.get("appname", None)

@@ -29,7 +29,7 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    message = models.TextField()
+    message = models.TextField(verbose_name=_("Message"))
     created_date = models.DateTimeField(auto_now=True)
     updated_date = models.DateTimeField(auto_now_add=True)
 

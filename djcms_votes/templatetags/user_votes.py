@@ -1,10 +1,12 @@
+from classytags.arguments import Argument
 from classytags.core import Options
 from classytags.helpers import Tag
-from classytags.arguments import Argument
 from django import template
 from django.template.loader import render_to_string
+
 from djcms_votes.models import get_app_name_models, Poll, Comment
 from djcms_votes.utils import randomword
+
 
 register = template.Library()
 
@@ -13,9 +15,10 @@ class User_Poll_Likes(Tag):
     name = 'user_poll_likes_chart'
     options = Options(
         Argument('user', required=True),
+        Argument('modal', required=False),
     )
 
-    def render_tag(self, context, user):
+    def render_tag(self, context, user, modal=False):
         if 'request' not in context:
             return ""
 
@@ -34,6 +37,7 @@ class User_Poll_Likes(Tag):
         return render_to_string('djcms_votes/user_poll_chart.html',
                                 {'user': user,
                                  'stats': stats,
+                                 'modal': modal,
                                  'id': randomword(5)
                                  }
                                 )
@@ -46,9 +50,10 @@ class User_comment_Likes(Tag):
     name = 'user_comment_likes_chart'
     options = Options(
         Argument('user', required=True),
+        Argument('modal', required=False),
     )
 
-    def render_tag(self, context, user):
+    def render_tag(self, context, user, modal=False):
         if 'request' not in context:
             return ""
 
@@ -65,6 +70,7 @@ class User_comment_Likes(Tag):
         return render_to_string('djcms_votes/user_comment_chart.html',
                                 {'user': user,
                                  'stats': stats,
+                                 'modal': modal,
                                  'id': randomword(5)
                                  }
                                 )

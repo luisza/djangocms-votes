@@ -1,19 +1,29 @@
 
 
 {% load i18n %}
+{% if modal %}
+<button type="button" class="btn btn-primary btn-sm" 
+data-chart_name="{{id}}_upc_{{user.pk}}"
+data-title="{% trans 'Votes' %} {{user.get_full_name}}"
+data-toggle="modal" data-target="#user_plot_modal">
+ {% trans 'Show plots' %}
+</button>
+{% else %}
 <div class="user_poll_chart"   >
 	<small> {% trans 'User votes' %}</small>
 	<canvas id="{{id}}_user_pool_chart_{{user.pk}}" width="30" height="30"></canvas>
-	
-	<script>
+
+</div>
+{%endif%}
+<script>
 {% if as_view %}
 (function(){
 {%else%}
 document.addEventListener("DOMContentLoaded", function(event){
 {% endif%}
-		var ctx = document.getElementById("{{id}}_user_pool_chart_{{user.pk}}").getContext("2d");
-		
-var myChart = new Chart(ctx, {
+
+if(document.userchart==undefined){document.userchart={}}
+document.userchart['{{id}}_upc_{{user.pk}}'] ={
     type: 'pie',
     data: {
         labels: ['\u2605', '\u2605\u2605', "\u2605\u2605\u2605", 
@@ -36,23 +46,17 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         }]
     },
-    animation:{
-        animateScale:true
-    },
-    options:{
-    	legend: {
-    		display: false
-    	 }
-    }
-    
-             
-  
-});
+    animation:{ animateScale:true  }{% if not modal %}  ,
+    options:{ legend: { display: false} }{%endif%}
+};
+{% if not modal %}
+var ctx = document.getElementById("{{id}}_user_pool_chart_{{user.pk}}").getContext("2d");
+var myChart = new Chart(ctx, document.userchart['{{id}}_upc_{{user.pk}}']);
+{%endif%}
 
 {% if as_view %}
 })();
 {% else %}
 });
 {%endif%}
-	</script>
-</div>
+</script>
