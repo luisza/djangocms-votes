@@ -81,7 +81,8 @@ class BucketView(View):
                     'data': bucketobj.get_data_display(allow_querys, form),
                     'plot': bucketobj.get_graph(allow_querys, form),
                     'title': bucketobj.get_title(),
-                    'bucket': bucketobj
+                    'bucket': bucketobj,
+                    'name': bucketobj.name,
                 })
 
         return render(request, self.template_name,

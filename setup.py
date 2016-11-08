@@ -28,7 +28,7 @@ setup(
     author='Luis Zarate',
     author_email='luis.zarate@solvosoft.com',
     name='djangocms-votes',
-    version='0.1.1',
+    version='0.1.2',
     description='Django cms comments, and rate system with stats.',
     long_description=README,
     url='https://github.com/luisza/djangocms-votes',
