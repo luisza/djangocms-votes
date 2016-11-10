@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djcms_votes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-05 18:34-0600\n"
-"PO-Revision-Date: 2016-11-05 18:15-0600\n"
+"POT-Creation-Date: 2016-11-10 14:38-0600\n"
+"PO-Revision-Date: 2016-11-10 14:41-0600\n"
 "Last-Translator: Luis Zárate <luis.zarate@solvosoft.com>\n"
 "Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
@@ -53,7 +53,7 @@ msgid "Polls"
 msgstr "Estrellas"
 
 #: bucket/basic_bucket.py:220
-msgid "Total starts"
+msgid "Total stars"
 msgstr "Total de estrellas"
 
 #: cms_apps.py:14 templates/djcms_votes/user_poll_chart.html:7
@@ -119,6 +119,10 @@ msgstr "No se encontraron comentarios"
 msgid "Articule votes"
 msgstr "Votos del articulo"
 
+#: templates/djcms_votes/poll_likes.html:9
+msgid "Your opinion is important, please score this article"
+msgstr "Su opinión es importante, por favor califique este artículo"
+
 #: templates/djcms_votes/user_comment_chart.html:12
 msgid "User comments"
 msgstr "Comentarios de usuario"
@@ -130,6 +134,10 @@ msgstr "Mostrar gráfico"
 #: templates/djcms_votes/user_poll_chart.html:13
 msgid "User votes"
 msgstr "Votos de usuario"
+
+#: templates/djcms_votes/user_votes.html:16
+msgid "Close"
+msgstr "Cerrar"
 
 #: templatetags/votes.py:116
 msgid "Loggin to rate"
